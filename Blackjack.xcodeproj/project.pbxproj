@@ -23,6 +23,14 @@
 		EE2A48FA205A902500DFB0BE /* BlackjackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2A48F0205A8C3700DFB0BE /* BlackjackViewModel.swift */; };
 		EE2A48FB205A902800DFB0BE /* BlackjackRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2A48F2205A8C5900DFB0BE /* BlackjackRouter.swift */; };
 		EE2A48FC205A902B00DFB0BE /* BlackjackProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2A48F5205A8CB200DFB0BE /* BlackjackProtocols.swift */; };
+		EE2A4901205AD90300DFB0BE /* UIPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2A4900205AD90300DFB0BE /* UIPlayerView.swift */; };
+		EEAFD920205BE094002F6C46 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD91F205BE094002F6C46 /* Player.swift */; };
+		EEAFD922205BE103002F6C46 /* PlayerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD921205BE103002F6C46 /* PlayerProtocols.swift */; };
+		EEAFD925205BE1EE002F6C46 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD924205BE1EE002F6C46 /* Card.swift */; };
+		EEAFD927205BE8DD002F6C46 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD926205BE8DD002F6C46 /* Deck.swift */; };
+		EEAFD929205BE95C002F6C46 /* DeckProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD928205BE95C002F6C46 /* DeckProtocol.swift */; };
+		EEAFD92B205BEF38002F6C46 /* CardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD92A205BEF38002F6C46 /* CardTests.swift */; };
+		EEAFD92C205BEF59002F6C46 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD924205BE1EE002F6C46 /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +69,13 @@
 		EE2A48F2205A8C5900DFB0BE /* BlackjackRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackjackRouter.swift; sourceTree = "<group>"; };
 		EE2A48F5205A8CB200DFB0BE /* BlackjackProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackjackProtocols.swift; sourceTree = "<group>"; };
 		EE2A48F7205A8F6A00DFB0BE /* BlackjackRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackjackRouterTests.swift; sourceTree = "<group>"; };
+		EE2A4900205AD90300DFB0BE /* UIPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPlayerView.swift; sourceTree = "<group>"; };
+		EEAFD91F205BE094002F6C46 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		EEAFD921205BE103002F6C46 /* PlayerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerProtocols.swift; sourceTree = "<group>"; };
+		EEAFD924205BE1EE002F6C46 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		EEAFD926205BE8DD002F6C46 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		EEAFD928205BE95C002F6C46 /* DeckProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckProtocol.swift; sourceTree = "<group>"; };
+		EEAFD92A205BEF38002F6C46 /* CardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CardTests.swift; path = BlackjackTests/CardTests.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +126,9 @@
 		EE2A48B9205A870A00DFB0BE /* Blackjack */ = {
 			isa = PBXGroup;
 			children = (
+				EEAFD923205BE1DA002F6C46 /* Entities */,
+				EE2A48FE205AB51600DFB0BE /* GameState */,
+				EE2A48FD205AB50100DFB0BE /* UI */,
 				EE2A48F4205A8C9600DFB0BE /* Protocols */,
 				EE2A48ED205A8C0600DFB0BE /* Router */,
 				EE2A48EC205A8BF000DFB0BE /* ViewModel */,
@@ -131,6 +149,7 @@
 				EE2A48D2205A870A00DFB0BE /* BlackjackTests.swift */,
 				EE2A48D4205A870A00DFB0BE /* Info.plist */,
 				EE2A48F7205A8F6A00DFB0BE /* BlackjackRouterTests.swift */,
+				EEAFD92A205BEF38002F6C46 /* CardTests.swift */,
 			);
 			path = BlackjackTests;
 			sourceTree = "<group>";
@@ -156,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				EE2A48F0205A8C3700DFB0BE /* BlackjackViewModel.swift */,
+				EEAFD91F205BE094002F6C46 /* Player.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -172,8 +192,42 @@
 			isa = PBXGroup;
 			children = (
 				EE2A48F5205A8CB200DFB0BE /* BlackjackProtocols.swift */,
+				EEAFD921205BE103002F6C46 /* PlayerProtocols.swift */,
+				EEAFD928205BE95C002F6C46 /* DeckProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		EE2A48FD205AB50100DFB0BE /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				EE2A48FF205AD8EB00DFB0BE /* UIPlayerView */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		EE2A48FE205AB51600DFB0BE /* GameState */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GameState;
+			sourceTree = "<group>";
+		};
+		EE2A48FF205AD8EB00DFB0BE /* UIPlayerView */ = {
+			isa = PBXGroup;
+			children = (
+				EE2A4900205AD90300DFB0BE /* UIPlayerView.swift */,
+			);
+			path = UIPlayerView;
+			sourceTree = "<group>";
+		};
+		EEAFD923205BE1DA002F6C46 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				EEAFD924205BE1EE002F6C46 /* Card.swift */,
+				EEAFD926205BE8DD002F6C46 /* Deck.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,9 +366,15 @@
 			files = (
 				EE2A48C3205A870A00DFB0BE /* Blackjack.xcdatamodeld in Sources */,
 				EE2A48EF205A8C1F00DFB0BE /* BlackjackViewController.swift in Sources */,
+				EE2A4901205AD90300DFB0BE /* UIPlayerView.swift in Sources */,
 				EE2A48BB205A870A00DFB0BE /* AppDelegate.swift in Sources */,
+				EEAFD920205BE094002F6C46 /* Player.swift in Sources */,
 				EE2A48F1205A8C3700DFB0BE /* BlackjackViewModel.swift in Sources */,
+				EEAFD929205BE95C002F6C46 /* DeckProtocol.swift in Sources */,
+				EEAFD922205BE103002F6C46 /* PlayerProtocols.swift in Sources */,
+				EEAFD925205BE1EE002F6C46 /* Card.swift in Sources */,
 				EE2A48F3205A8C5900DFB0BE /* BlackjackRouter.swift in Sources */,
+				EEAFD927205BE8DD002F6C46 /* Deck.swift in Sources */,
 				EE2A48F6205A8CB200DFB0BE /* BlackjackProtocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,9 +386,11 @@
 				EE2A48FC205A902B00DFB0BE /* BlackjackProtocols.swift in Sources */,
 				EE2A48D3205A870A00DFB0BE /* BlackjackTests.swift in Sources */,
 				EE2A48FB205A902800DFB0BE /* BlackjackRouter.swift in Sources */,
+				EEAFD92B205BEF38002F6C46 /* CardTests.swift in Sources */,
 				EE2A48FA205A902500DFB0BE /* BlackjackViewModel.swift in Sources */,
 				EE2A48F8205A8F6A00DFB0BE /* BlackjackRouterTests.swift in Sources */,
 				EE2A48F9205A900D00DFB0BE /* BlackjackViewController.swift in Sources */,
+				EEAFD92C205BEF59002F6C46 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
