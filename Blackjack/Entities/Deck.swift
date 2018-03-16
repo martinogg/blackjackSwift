@@ -8,26 +8,34 @@
 
 import Foundation
 
-class Deck: DeckProtocol {
-    private var cards: Set<Card> = []
+typealias Deck = Set<Card>
+
+extension Set where Element == Card {
     
-    init() {
-        resetDeck()
+    mutating func resetDeck() {
+        
+        self.removeAll()
+        
+        let suites: [Suite] = [.Club, .Diamond, .Heart, .Spade]
+        let digitValues: [DigitValue] = [.v2, .v3, .v4, .v5, .v6, .v7, .v8, .v9, .v10]
+        
+        for suite in suites {
+            for digit in digitValues {
+                self.insert(Card.Digit(suite, digit))
+            }
+            self.insert(Card.Jack(suite))
+            self.insert(Card.Queen(suite))
+            self.insert(Card.King(suite))
+            self.insert(Card.Ace(suite))
+        }
     }
     
-    func resetDeck() {
-        //TODO
+    mutating func takeRandomCard() -> Card? {
+
+        guard let cardToTake = self.count == 0 ? nil : self[self.index(self.startIndex, offsetBy: Int(arc4random()) % self.count)] else {
+            return nil
+        }
+        return self.remove(cardToTake)
     }
-    
-    func takeRandomCard() -> Card? {
-        //TODO
-        return nil
-    }
-    
-    func take(card: Card) -> Card? {
-        //TODO
-        return nil
-    }
-    
     
 }
