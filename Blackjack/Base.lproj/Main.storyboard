@@ -13,7 +13,7 @@
         <!--Blackjack View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="BlackjackViewController" customModule="Blackjack" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BlackjackViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="BlackjackViewController" customModule="Blackjack" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,6 +45,9 @@
                                                 <integer key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="hitButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sly-1U-qpF"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y93-CR-goK">
                                         <rect key="frame" x="157.5" y="0.0" width="152.5" height="80"/>
@@ -56,6 +59,9 @@
                                                 <integer key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="standButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uwi-mj-Izj"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -71,30 +77,9 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8zr-kb-iim">
                                 <rect key="frame" x="5" y="86" width="310" height="392"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5UR-RH-gco">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5UR-RH-gco" customClass="UIPlayerView" customModule="Blackjack" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="310" height="193.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dealer Hand: 12, Wins: 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sil-7k-54d">
-                                                <rect key="frame" x="5" y="5" width="300" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7AJ-wP-es4">
-                                                <rect key="frame" x="5" y="30.5" width="300" height="158"/>
-                                                <color key="backgroundColor" red="0.75406885150000003" green="0.75408679249999999" blue="0.75407713649999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </view>
-                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="7AJ-wP-es4" firstAttribute="leading" secondItem="5UR-RH-gco" secondAttribute="leading" constant="5" id="0Mp-Zg-Ok9"/>
-                                            <constraint firstAttribute="bottom" secondItem="7AJ-wP-es4" secondAttribute="bottom" constant="5" id="3CI-Jh-DLu"/>
-                                            <constraint firstItem="sil-7k-54d" firstAttribute="top" secondItem="5UR-RH-gco" secondAttribute="top" constant="5" id="3Uw-PD-akZ"/>
-                                            <constraint firstItem="7AJ-wP-es4" firstAttribute="top" secondItem="sil-7k-54d" secondAttribute="bottom" constant="5" id="4Ib-St-6HU"/>
-                                            <constraint firstItem="sil-7k-54d" firstAttribute="leading" secondItem="5UR-RH-gco" secondAttribute="leading" constant="5" id="a06-hm-dHa"/>
-                                            <constraint firstAttribute="trailing" secondItem="sil-7k-54d" secondAttribute="trailing" constant="5" id="dN5-3e-xJL"/>
-                                            <constraint firstAttribute="trailing" secondItem="7AJ-wP-es4" secondAttribute="trailing" constant="5" id="mU9-Ny-eE5"/>
-                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="5"/>
@@ -134,6 +119,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="currentGame" destination="QTq-d5-O0W" id="bv1-rY-lmJ"/>
+                        <outlet property="dealerView" destination="5UR-RH-gco" id="fet-T3-5eL"/>
+                        <outlet property="gameStatus" destination="3Jt-JV-4oA" id="hHE-n4-P8K"/>
+                        <outlet property="userView" destination="9ga-oW-Gwg" id="Udi-LQ-w6A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

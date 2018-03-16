@@ -9,11 +9,13 @@
 import Foundation
 import UIKit
 
-@IBDesignable class UIPlayerView: UIView {
+@IBDesignable class UIPlayerView: UIView, UIPlayerViewProtocol {
     
     var status: UILabel?
     var cardsView: UIView?
     var playerModel: PlayerModelProtocol?
+    
+    var cards: [UIView] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,7 +28,7 @@ import UIKit
     }
     
     private func setupButtons() {
-
+        // TODO TEST
         status = UILabel.init()
         guard let status = status else { return }
 
@@ -63,5 +65,20 @@ import UIKit
         let cardsBottom = NSLayoutConstraint(item: cardsView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottomMargin, multiplier: 1, constant: 0)
         
         addConstraints([cardsLeft, cardsTop, cardsRight, cardsBottom])
+    }
+    
+    func add(card: Card) {
+        let newUICard = UIImageView.init(image: UIImage.init(named: card.stringValue))
+        cards.append(newUICard)
+        cardsView?.addSubview(newUICard)
+        // TODO Position correctly
+    }
+    
+    func removeAllCards() {
+        _ = cards.map { (card) in
+            card.removeFromSuperview()
+            // TODO: Animate out, or something
+        }
+        cards.removeAll()
     }
 }

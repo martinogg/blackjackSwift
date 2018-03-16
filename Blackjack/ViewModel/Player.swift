@@ -9,12 +9,54 @@
 import Foundation
 
 class PlayerModel: PlayerModelProtocol {
+    var view: UIPlayerViewProtocol?
+    
+    var hand = [Card]()
+    
     func give(card: Card) {
-        //TODO
+        hand.append(card)
+        view?.add(card: card)
     }
     
     func resetHand() {
-        //TODO
+        hand.removeAll()
+        view?.removeAllCards()
+    }
+    
+    var score: Int {
+        get {
+            var score = hand.reduce(0) { (previous, card) -> Int in
+                switch(card) {
+                case .Digit(_, let digitValue):
+                    return previous + digitValue.rawValue
+                case .Jack(_):
+                    return previous + 10
+                case .Queen(_):
+                    return previous + 10
+                case .King(_):
+                    return previous + 10
+                case .Ace(_):
+                    return previous + 11 // Default to max value initially
+                }
+            }
+            
+            // Reduce Ace's values sequentially until <= 21
+            
+            _ = hand.filter { (card) -> Bool in
+                switch (card) {
+                case .Ace(_):
+                    return true
+                default:
+                    return false
+                }
+                } .map {_ in
+                    if score > 21 {
+                        score -= 10
+                    }
+            }
+            
+            return score
+        }
     }
     
     

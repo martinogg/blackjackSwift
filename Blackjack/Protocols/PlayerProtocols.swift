@@ -8,7 +8,18 @@
 
 import Foundation
 
+protocol UIPlayerViewProtocol: class {
+    var playerModel: PlayerModelProtocol? { get set } // View -> Model
+    
+    func add(card: Card)
+    func removeAllCards()
+}
+
 protocol PlayerModelProtocol: class {
+    weak var view: UIPlayerViewProtocol? { get set } // Model -> View
+    
+    var hand: [Card] { get }
+    var score: Int { get }
     func give(card: Card)
     func resetHand()
 }
