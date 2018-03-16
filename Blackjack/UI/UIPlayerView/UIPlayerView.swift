@@ -68,7 +68,8 @@ import UIKit
     }
     
     func add(card: Card) {
-        let newUICard = UIImageView.init(image: UIImage.init(named: card.stringValue))
+        let image = UIImage.init(named: "\(card.stringValue).png")
+        let newUICard = UIImageView.init(image: image)
         cards.append(newUICard)
         cardsView?.addSubview(newUICard)
         // TODO Position correctly

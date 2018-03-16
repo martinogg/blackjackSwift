@@ -22,17 +22,38 @@ class BlackjackRouterTests: XCTestCase {
     
     func testAttachViewModel() {
         let mockViewController = BlackjackViewController()
+        let dealerView = UIPlayerView();
+        let userView = UIPlayerView();
+        mockViewController.dealerView = dealerView
+        mockViewController.userView = userView
         
         BlackjackRouter.attachViewModel(to: mockViewController);
         
         XCTAssert(mockViewController.viewModel != nil)
         
-        guard let viewConrollerOfviewModel = mockViewController.viewModel?.viewController as? BlackjackViewController else {
+        guard let viewControllerOfviewModel = mockViewController.viewModel?.viewController as? BlackjackViewController else {
             XCTFail()
             return
         }
         
-        XCTAssert(viewConrollerOfviewModel == mockViewController)
+        XCTAssert(viewControllerOfviewModel == mockViewController)
+        
+        XCTAssert(mockViewController.dealerView.playerModel != nil)
+        XCTAssert(mockViewController.userView.playerModel != nil)
+        guard let dealerViewOfDealerPlayerModel = mockViewController.dealerView.playerModel?.view as? UIPlayerView,
+            let userViewOfUserPlayerModel = mockViewController.userView.playerModel?.view as? UIPlayerView else {
+                XCTFail()
+                return
+        }
+        XCTAssert(dealerViewOfDealerPlayerModel == mockViewController.dealerView)
+        XCTAssert(userViewOfUserPlayerModel == mockViewController.userView)
+        
+        guard let viewModel = mockViewController.viewModel else {
+            XCTFail()
+            return
+        }
+        XCTAssert(viewModel.userViewModel != nil)
+        XCTAssert(viewModel.dealerViewModel != nil)
     }
     
 }

@@ -11,6 +11,16 @@ import Foundation
 class BlackjackViewModel: BlackjackViewModelProtocol {
     var viewController: BlackjackViewControllerProtocol?
     
-
+    weak var userViewModel: UserViewModel?
+    weak var dealerViewModel: DealerViewModel?
+    
+    func viewDidLoad() {
+        //TODO TEST
+        DispatchQueue.main.async { [weak self] in
+            self?.userViewModel?.give(card: Card.Ace(.Club))
+            
+        }
+        
+    }
 }
 

@@ -12,8 +12,8 @@ import UIKit
 class BlackjackViewController: UIViewController, BlackjackViewControllerProtocol {
     var viewModel: BlackjackViewModelProtocol?
     
-    @IBOutlet weak var dealerView:UIPlayerView!
-    @IBOutlet weak var userView:UIPlayerView!
+    @IBOutlet weak var dealerView: UIPlayerView!
+    @IBOutlet weak var userView: UIPlayerView!
     
     @IBAction func hitButtonPress(_ sender: Any) {
     }
@@ -23,5 +23,10 @@ class BlackjackViewController: UIViewController, BlackjackViewControllerProtocol
     
     @IBOutlet weak var gameStatus: UILabel!
     @IBOutlet weak var currentGame: UILabel!
+    
+    override func viewDidLoad() {
+        BlackjackRouter.attachViewModel(to: self)
+        viewModel?.viewDidLoad()
+    }
     
 }

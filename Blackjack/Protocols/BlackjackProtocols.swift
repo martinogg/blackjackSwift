@@ -12,10 +12,18 @@ protocol BlackjackViewControllerProtocol: class {
     var viewModel: BlackjackViewModelProtocol? {get set}
     // ViewModel -> ViewController
     
+    weak var dealerView: UIPlayerView! {get}
+    weak var userView: UIPlayerView! {get}
+    
 }
 
 protocol BlackjackViewModelProtocol: class {
     weak var viewController: BlackjackViewControllerProtocol? {get set}
     // ViewController -> ViewModel
+    
+    weak var userViewModel: UserViewModel? {get set}
+    weak var dealerViewModel: DealerViewModel? {get set}
+    
+    func viewDidLoad()
     
 }
