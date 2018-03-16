@@ -1,5 +1,5 @@
 //
-//  Player.swift
+//  PlayerViewModel.swift
 //  Blackjack
 //
 //  Created by martin ogg on 16/03/2018.

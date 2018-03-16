@@ -128,7 +128,7 @@
 		EE813D44205C4DAC003A793A /* c4.png in Resources */ = {isa = PBXBuildFile; fileRef = EE813CDD205C4DAC003A793A /* c4.png */; };
 		EE813D45205C4DAC003A793A /* c5.png in Resources */ = {isa = PBXBuildFile; fileRef = EE813CDE205C4DAC003A793A /* c5.png */; };
 		EE813D46205C4DAC003A793A /* c5.png in Resources */ = {isa = PBXBuildFile; fileRef = EE813CDE205C4DAC003A793A /* c5.png */; };
-		EEAFD920205BE094002F6C46 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD91F205BE094002F6C46 /* Player.swift */; };
+		EEAFD920205BE094002F6C46 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD91F205BE094002F6C46 /* PlayerViewModel.swift */; };
 		EEAFD922205BE103002F6C46 /* PlayerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD921205BE103002F6C46 /* PlayerProtocols.swift */; };
 		EEAFD925205BE1EE002F6C46 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD924205BE1EE002F6C46 /* Card.swift */; };
 		EEAFD927205BE8DD002F6C46 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD926205BE8DD002F6C46 /* Deck.swift */; };
@@ -138,7 +138,7 @@
 		EEAFD92F205BFFA2002F6C46 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD926205BE8DD002F6C46 /* Deck.swift */; };
 		EEAFD930205C02BD002F6C46 /* PlayerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD921205BE103002F6C46 /* PlayerProtocols.swift */; };
 		EEAFD936205C1A2D002F6C46 /* PlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD935205C1A2D002F6C46 /* PlayerTests.swift */; };
-		EEAFD937205C1A32002F6C46 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD91F205BE094002F6C46 /* Player.swift */; };
+		EEAFD937205C1A32002F6C46 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD91F205BE094002F6C46 /* PlayerViewModel.swift */; };
 		EEAFD93C205C25CD002F6C46 /* UIPlayerViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD93B205C25CD002F6C46 /* UIPlayerViewTests.swift */; };
 		EEAFD93D205C25D1002F6C46 /* UIPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2A4900205AD90300DFB0BE /* UIPlayerView.swift */; };
 		EEAFD940205C3207002F6C46 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD93F205C3207002F6C46 /* UserViewModel.swift */; };
@@ -237,7 +237,7 @@
 		EE813CDC205C4DAC003A793A /* c6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = c6.png; sourceTree = "<group>"; };
 		EE813CDD205C4DAC003A793A /* c4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = c4.png; sourceTree = "<group>"; };
 		EE813CDE205C4DAC003A793A /* c5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = c5.png; sourceTree = "<group>"; };
-		EEAFD91F205BE094002F6C46 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		EEAFD91F205BE094002F6C46 /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		EEAFD921205BE103002F6C46 /* PlayerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerProtocols.swift; sourceTree = "<group>"; };
 		EEAFD924205BE1EE002F6C46 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		EEAFD926205BE8DD002F6C46 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
@@ -352,7 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				EE2A48F0205A8C3700DFB0BE /* BlackjackViewModel.swift */,
-				EEAFD91F205BE094002F6C46 /* Player.swift */,
+				EEAFD91F205BE094002F6C46 /* PlayerViewModel.swift */,
 				EEAFD93F205C3207002F6C46 /* UserViewModel.swift */,
 				EEAFD942205C3230002F6C46 /* DealerViewModel.swift */,
 			);
@@ -710,7 +710,7 @@
 				EE2A48EF205A8C1F00DFB0BE /* BlackjackViewController.swift in Sources */,
 				EE2A4901205AD90300DFB0BE /* UIPlayerView.swift in Sources */,
 				EE2A48BB205A870A00DFB0BE /* AppDelegate.swift in Sources */,
-				EEAFD920205BE094002F6C46 /* Player.swift in Sources */,
+				EEAFD920205BE094002F6C46 /* PlayerViewModel.swift in Sources */,
 				EE2A48F1205A8C3700DFB0BE /* BlackjackViewModel.swift in Sources */,
 				EEAFD922205BE103002F6C46 /* PlayerProtocols.swift in Sources */,
 				EEAFD925205BE1EE002F6C46 /* Card.swift in Sources */,
@@ -732,7 +732,7 @@
 				EEAFD92F205BFFA2002F6C46 /* Deck.swift in Sources */,
 				EEAFD944205C3230002F6C46 /* DealerViewModel.swift in Sources */,
 				EEAFD936205C1A2D002F6C46 /* PlayerTests.swift in Sources */,
-				EEAFD937205C1A32002F6C46 /* Player.swift in Sources */,
+				EEAFD937205C1A32002F6C46 /* PlayerViewModel.swift in Sources */,
 				EE2A48FB205A902800DFB0BE /* BlackjackRouter.swift in Sources */,
 				EEAFD92E205BFF9C002F6C46 /* DeckTests.swift in Sources */,
 				EEAFD941205C3207002F6C46 /* UserViewModel.swift in Sources */,

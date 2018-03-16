@@ -28,7 +28,7 @@ import UIKit
     }
     
     private func setupButtons() {
-        // TODO TEST
+        // TODO TEST(CONSTRAINTS/UI)
         status = UILabel.init()
         guard let status = status else { return }
 
@@ -70,15 +70,39 @@ import UIKit
     func add(card: Card) {
         let image = UIImage.init(named: "\(card.stringValue).png")
         let newUICard = UIImageView.init(image: image)
+        newUICard.frame.origin.x = self.frame.width // Get it to the far right to begin with
         cards.append(newUICard)
         cardsView?.addSubview(newUICard)
-        // TODO Position correctly
+        
+        moveCardsToCorrectPositions()
+    }
+    
+    private func moveCardsToCorrectPositions() {
+        //TODO TEST (UI)
+        let maxWidth = self.frame.width
+        let xDist = maxWidth / CGFloat(cards.count + 1)
+        for i in 0..<cards.count {
+            let cardToMove = cards[i]
+            UIView.animate(withDuration: 0.1, delay: Double(i)*0.1, options: UIViewAnimationOptions.curveEaseOut
+                , animations: {
+                    cardToMove.frame.origin.x = (xDist * CGFloat(i+1)) - (cardToMove.frame.width / CGFloat(2))
+            }, completion: nil)
+            
+        }
+        
     }
     
     func removeAllCards() {
-        _ = cards.map { (card) in
-            card.removeFromSuperview()
-            // TODO: Animate out, or something
+        //TODO TEST (UI)
+        for i in 0..<cards.count {
+            let cardToMove = cards[i]
+            UIView.animate(withDuration: 0.1, delay: Double(i)*0.1, options: UIViewAnimationOptions.curveEaseIn
+                , animations: {
+                    cardToMove.frame.origin.x = -cardToMove.frame.width
+            }, completion: { _ in
+                cardToMove.removeFromSuperview()
+            })
+            
         }
         cards.removeAll()
     }
