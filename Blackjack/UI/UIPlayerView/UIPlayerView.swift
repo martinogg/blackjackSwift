@@ -68,14 +68,12 @@ import UIKit
     }
     
     func addHiddenCard() {
-        //TODO TEST
         if let image = UIImage.init(named: "hidden.png") {
             addCard(image)
         }
     }
     
     func replaceFirstCard(with card:Card) {
-        //TODO TEST
         if let image = imageFor(card: card),
             let firstCard = cards.first {
             firstCard.image = image

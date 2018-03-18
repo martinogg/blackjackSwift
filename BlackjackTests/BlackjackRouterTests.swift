@@ -9,6 +9,7 @@
 import XCTest
 
 class BlackjackRouterTests: XCTestCase {
+    let routerToTest = BlackjackRouter()
     
     override func setUp() {
         super.setUp()
@@ -55,6 +56,49 @@ class BlackjackRouterTests: XCTestCase {
         XCTAssert(viewModel.userViewModel != nil)
         XCTAssert(viewModel.dealerViewModel != nil)
         XCTAssert(viewModel.router != nil)
+        
+        XCTAssert(viewModel.userViewModel?.playerName == "User")
+        XCTAssert(viewModel.dealerViewModel?.playerName == "Dealer")
+        
+    }
+    
+    func testCreateGameStates() {
+        let mockViewModel = BlackjackViewModel()
+        let mockUserViewModel = UserViewModel()
+        let mockDealerViewModel = DealerViewModel()
+        mockViewModel.userViewModel = mockUserViewModel
+        mockViewModel.dealerViewModel = mockDealerViewModel
+        
+        let returnedGameStates = routerToTest.createGameStates(with: mockViewModel)
+        
+        XCTAssert(returnedGameStates.count == 4)
+        guard let newGameState = returnedGameStates[0] as? NewPlayGamestate,
+            let userPlayGameState = returnedGameStates[1] as? UserPlayGamestate,
+            let dealerPlayGameState = returnedGameStates[2] as? DealerPlayGamestate,
+            let endPlayGameState = returnedGameStates[3] as? EndPlayGamestate else {
+                XCTFail()
+                return
+        }
+        
+        XCTAssert(newGameState.blackjackViewModel === mockViewModel)
+        XCTAssert(userPlayGameState.blackjackViewModel === mockViewModel)
+        XCTAssert(dealerPlayGameState.blackjackViewModel === mockViewModel)
+        XCTAssert(endPlayGameState.blackjackViewModel === mockViewModel)
+        
+        XCTAssert(newGameState.nextGamestate === userPlayGameState)
+        XCTAssert(userPlayGameState.nextGamestate === dealerPlayGameState)
+        XCTAssert(dealerPlayGameState.nextGamestate === endPlayGameState)
+        XCTAssert(endPlayGameState.nextGamestate === newGameState)
+        
+        XCTAssert(newGameState.userViewModel != nil)
+        XCTAssert(newGameState.dealerViewModel != nil)
+        
+        XCTAssert(userPlayGameState.userViewModel != nil)
+        
+        XCTAssert(dealerPlayGameState.dealerViewModel != nil)
+        
+        XCTAssert(endPlayGameState.userViewModel != nil)
+        XCTAssert(endPlayGameState.dealerViewModel != nil)
     }
     
 }

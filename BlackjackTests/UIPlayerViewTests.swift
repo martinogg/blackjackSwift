@@ -49,4 +49,26 @@ class UIPlayerViewTests: XCTestCase {
         XCTAssert(labelToTest.text == stringToTest)
         XCTAssert(playerViewToTest.statusText == stringToTest)
     }
+    
+    func testAddHiddenCardAndReplaceFirstCard() {
+        playerViewToTest.addHiddenCard()
+        
+        XCTAssert(playerViewToTest.cards.count == 1)
+        guard let cardsView = playerViewToTest.cardsView,
+            let cardInView = playerViewToTest.cards.first else {
+                XCTFail()
+                return
+        }
+        XCTAssert(cardsView.subviews.contains(cardInView))
+        
+        playerViewToTest.replaceFirstCard(with: .Ace(.Club))
+        
+        XCTAssert(playerViewToTest.cards.count == 1)
+        guard let cardsView2 = playerViewToTest.cardsView,
+            let cardInView2 = playerViewToTest.cards.first else {
+                XCTFail()
+                return
+        }
+        XCTAssert(cardsView2.subviews.contains(cardInView2))
+    }
 }

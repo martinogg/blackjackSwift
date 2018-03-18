@@ -8,6 +8,23 @@
 
 import Foundation
 
+class MockDealerViewModel: DealerViewModel {
+    var giveCallBack: (()->())?
+    
+    var cardToGiveInstead = Card.Jack(.Club) // will always give the same card.
+    override func give(card: Card) {
+        
+        super.give(card: cardToGiveInstead)
+        giveCallBack?()
+    }
+    
+    var unHideFirstCardCallback: (()->())?
+    override func unHideFirstCard() {
+        unHideFirstCardCallback?()
+        super.unHideFirstCard()
+    }
+}
+
 class MockUserViewModel: UserViewModel {
     var giveCallBack: (()->())?
     

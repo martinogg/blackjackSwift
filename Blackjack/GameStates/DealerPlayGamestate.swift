@@ -15,7 +15,6 @@ class DealerPlayGamestate: GamestateProtocol {
     weak var dealerViewModel: DealerViewModel?
     
     func onEnterState() {
-        // TODO TEST
         let playername = dealerViewModel?.playerName ?? "Player"
         blackjackViewModel?.updateStatusText(text: "\(playername) to play")
         
@@ -34,7 +33,6 @@ class DealerPlayGamestate: GamestateProtocol {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             self?.blackjackViewModel?.endCurrentState()
         }
-
     }
     
     func willLeaveState() { }

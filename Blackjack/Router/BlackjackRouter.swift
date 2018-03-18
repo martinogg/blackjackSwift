@@ -15,12 +15,11 @@ class BlackjackRouter: BlackjackRouterProtocol {
         let dealerModel = DealerViewModel()
         let blackjackRouter = BlackjackRouter()
         
-        //TODO TEST
         userModel.playerName = "User"
         dealerModel.playerName = "Dealer"
         
         viewModel.viewController = viewController
-        viewModel.router = blackjackRouter // TODO TEST
+        viewModel.router = blackjackRouter
         viewController.viewModel = viewModel
         
         userModel.view = viewController.userView
@@ -33,7 +32,6 @@ class BlackjackRouter: BlackjackRouterProtocol {
     }
     
     func createGameStates(with viewModel: BlackjackViewModelProtocol) -> [GamestateProtocol] {
-        // TODO TEST
         let newGameState = NewPlayGamestate()
         let userPlayGameState = UserPlayGamestate()
         let dealerPlayGameState = DealerPlayGamestate()

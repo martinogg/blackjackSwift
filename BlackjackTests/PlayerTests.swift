@@ -107,5 +107,25 @@ class PlayerTests: XCTestCase {
         XCTAssert(playerToTest.score == 15)
     }
     
-    
+    func testUpdateText() {
+        let mockPlayerView = MockPlayerView()
+        playerToTest.view = mockPlayerView
+        playerToTest.playerName = "aName"
+        
+        playerToTest.updateText()
+        
+        XCTAssert(mockPlayerView.statusText == "aName: Score:0 Wins:0")
+        
+        playerToTest.give(card: .Jack(.Club))
+        
+        XCTAssert(mockPlayerView.statusText == "aName: Score:10 Wins:0")
+        
+        playerToTest.give(card: .Jack(.Club))
+        
+        XCTAssert(mockPlayerView.statusText == "aName: Score:20 Wins:0")
+        
+        playerToTest.give(card: .Jack(.Club))
+        
+        XCTAssert(mockPlayerView.statusText == "aName: Score:BUST Wins:0")
+    }
 }
