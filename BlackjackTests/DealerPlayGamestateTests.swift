@@ -30,10 +30,17 @@ class DealerPlayGamestateTests: XCTestCase {
         mockDealerViewModel.playerName = "aName"
         
         let updateStatusTextCallbackExpectation = expectation(description: "updateStatusTextCallbackExpectation")
+        let updateStatusTextCallbackExpectation2 = expectation(description: "updateStatusTextCallbackExpectation2")
         
-        mockViewModel.updateStatusTextCallback = {text in
+        mockViewModel.updateStatusTextCallback = { [weak self] text in
             updateStatusTextCallbackExpectation.fulfill()
             XCTAssert(text == "aName to play")
+            
+            // 2nd time when updatetext is called
+            self?.mockViewModel.updateStatusTextCallback = { text2 in
+                updateStatusTextCallbackExpectation2.fulfill()
+                XCTAssert(text2 == "aName finished playing")
+            }
         }
         
         let unHideFirstCardCallback = expectation(description: "unHideFirstCardCallback")
