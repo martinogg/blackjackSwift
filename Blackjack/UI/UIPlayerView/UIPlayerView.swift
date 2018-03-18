@@ -15,7 +15,7 @@ import UIKit
     var cardsView: UIView?
     var playerModel: PlayerModelProtocol?
     
-    var cards: [UIView] = []
+    var cards: [UIImageView] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -67,8 +67,32 @@ import UIKit
         addConstraints([cardsLeft, cardsTop, cardsRight, cardsBottom])
     }
     
+    func addHiddenCard() {
+        //TODO TEST
+        if let image = UIImage.init(named: "hidden.png") {
+            addCard(image)
+        }
+    }
+    
+    func replaceFirstCard(with card:Card) {
+        //TODO TEST
+        if let image = imageFor(card: card),
+            let firstCard = cards.first {
+            firstCard.image = image
+        }
+    }
+    
     func add(card: Card) {
-        let image = UIImage.init(named: "\(card.stringValue).png")
+        if let image = imageFor(card: card) {
+            addCard(image)
+        }
+    }
+    
+    private func imageFor(card: Card) -> UIImage? {
+        return UIImage.init(named: "\(card.stringValue).png")
+    }
+    
+    private func addCard(_ image: UIImage) {
         let newUICard = UIImageView.init(image: image)
         newUICard.frame.origin.x = self.frame.width // Get it to the far right to begin with
         cards.append(newUICard)

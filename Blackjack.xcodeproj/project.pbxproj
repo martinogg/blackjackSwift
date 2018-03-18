@@ -139,6 +139,8 @@
 		EE813D54205D50E0003A793A /* EndPlayGamestate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE813D53205D50E0003A793A /* EndPlayGamestate.swift */; };
 		EE813D55205D50E0003A793A /* EndPlayGamestate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE813D53205D50E0003A793A /* EndPlayGamestate.swift */; };
 		EE813D57205E837D003A793A /* BlackjackViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE813D56205E837D003A793A /* BlackjackViewModelTests.swift */; };
+		EE813D59205ECA79003A793A /* hidden.png in Resources */ = {isa = PBXBuildFile; fileRef = EE813D58205ECA79003A793A /* hidden.png */; };
+		EE813D5A205ECA79003A793A /* hidden.png in Resources */ = {isa = PBXBuildFile; fileRef = EE813D58205ECA79003A793A /* hidden.png */; };
 		EEAFD920205BE094002F6C46 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD91F205BE094002F6C46 /* PlayerViewModel.swift */; };
 		EEAFD922205BE103002F6C46 /* PlayerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD921205BE103002F6C46 /* PlayerProtocols.swift */; };
 		EEAFD925205BE1EE002F6C46 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD924205BE1EE002F6C46 /* Card.swift */; };
@@ -254,6 +256,7 @@
 		EE813D50205D50B8003A793A /* NewPlayGamestate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlayGamestate.swift; sourceTree = "<group>"; };
 		EE813D53205D50E0003A793A /* EndPlayGamestate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPlayGamestate.swift; sourceTree = "<group>"; };
 		EE813D56205E837D003A793A /* BlackjackViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackjackViewModelTests.swift; sourceTree = "<group>"; };
+		EE813D58205ECA79003A793A /* hidden.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hidden.png; sourceTree = "<group>"; };
 		EEAFD91F205BE094002F6C46 /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		EEAFD921205BE103002F6C46 /* PlayerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerProtocols.swift; sourceTree = "<group>"; };
 		EEAFD924205BE1EE002F6C46 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -425,6 +428,7 @@
 		EE813CAA205C4DAB003A793A /* cards */ = {
 			isa = PBXGroup;
 			children = (
+				EE813D58205ECA79003A793A /* hidden.png */,
 				EE813CAB205C4DAB003A793A /* c8.png */,
 				EE813CAC205C4DAB003A793A /* c9.png */,
 				EE813CAD205C4DAB003A793A /* ck.png */,
@@ -638,6 +642,7 @@
 				EE813D0F205C4DAC003A793A /* d7.png in Resources */,
 				EE813D17205C4DAC003A793A /* h6.png in Resources */,
 				EE813D3D205C4DAC003A793A /* c7.png in Resources */,
+				EE813D59205ECA79003A793A /* hidden.png in Resources */,
 				EE813CF5205C4DAC003A793A /* h10.png in Resources */,
 				EE813D27205C4DAC003A793A /* dq.png in Resources */,
 				EE813CF9205C4DAC003A793A /* dk.png in Resources */,
@@ -679,6 +684,7 @@
 				EE813CEE205C4DAC003A793A /* s7.png in Resources */,
 				EE813D0A205C4DAC003A793A /* s2.png in Resources */,
 				EE813CF4205C4DAC003A793A /* s10.png in Resources */,
+				EE813D5A205ECA79003A793A /* hidden.png in Resources */,
 				EE813D10205C4DAC003A793A /* d7.png in Resources */,
 				EE813CF0205C4DAC003A793A /* sa.png in Resources */,
 				EE813D0E205C4DAC003A793A /* d6.png in Resources */,

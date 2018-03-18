@@ -15,6 +15,8 @@ protocol UIPlayerViewProtocol: class {
     
     func add(card: Card)
     func removeAllCards()
+    func addHiddenCard()
+    func replaceFirstCard(with card:Card)
 }
 
 protocol PlayerModelProtocol: class {

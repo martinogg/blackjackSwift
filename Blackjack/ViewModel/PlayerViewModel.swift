@@ -27,7 +27,8 @@ class PlayerModel: PlayerModelProtocol {
     
     func updateText() {
         // todo test
-        view?.statusText = "\(playerName): Score:\(score) Wins:\(wins)"
+        let scoreText = score > 21 ? "BUST" : "\(score)"
+        view?.statusText = "\(playerName): Score:\(scoreText) Wins:\(wins)"
     }
     
     var score: Int {

@@ -19,6 +19,8 @@ class DealerPlayGamestate: GamestateProtocol {
         let playername = dealerViewModel?.playerName ?? "Player"
         blackjackViewModel?.updateStatusText(text: "\(playername) to play")
         
+        dealerViewModel?.unHideFirstCard()
+        
         if let dealerViewModel = dealerViewModel {
             while (dealerViewModel.score < 14) {
                 if let blackjackViewModel = blackjackViewModel {

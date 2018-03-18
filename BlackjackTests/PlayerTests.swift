@@ -11,6 +11,10 @@ import XCTest
 class PlayerTests: XCTestCase {
     
     class MockPlayerView : UIPlayerViewProtocol {
+        func addHiddenCard() { }
+        
+        func replaceFirstCard(with card: Card) { }
+        
         var statusText: String = ""
         
         var playerModel: PlayerModelProtocol?
