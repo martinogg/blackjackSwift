@@ -11,6 +11,8 @@ import XCTest
 class PlayerTests: XCTestCase {
     
     class MockPlayerView : UIPlayerViewProtocol {
+        var statusText: String = ""
+        
         var playerModel: PlayerModelProtocol?
         var addFuncCallback: ((Card)->())? = nil
         var removeAllCardsCallback: (()->())? = nil

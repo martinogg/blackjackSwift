@@ -11,6 +11,8 @@ import Foundation
 protocol UIPlayerViewProtocol: class {
     var playerModel: PlayerModelProtocol? { get set } // View -> Model
     
+    var statusText: String { get set }
+    
     func add(card: Card)
     func removeAllCards()
 }

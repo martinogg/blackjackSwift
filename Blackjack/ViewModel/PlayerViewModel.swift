@@ -10,17 +10,24 @@ import Foundation
 
 class PlayerModel: PlayerModelProtocol {
     var view: UIPlayerViewProtocol?
-    
     var hand = [Card]()
+    var playerName = "Unnamed"
+    var wins = 0
     
     func give(card: Card) {
         hand.append(card)
         view?.add(card: card)
+        updateText()
     }
     
     func resetHand() {
         hand.removeAll()
         view?.removeAllCards()
+    }
+    
+    func updateText() {
+        // todo test
+        view?.statusText = "\(playerName): Score:\(score) Wins:\(wins)"
     }
     
     var score: Int {

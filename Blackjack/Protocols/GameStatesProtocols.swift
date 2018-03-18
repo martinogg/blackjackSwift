@@ -24,6 +24,7 @@ protocol GamestateProtocol: class {
 protocol GamestateToBlackjackViewModelProtocol: class {
     // GameState -> BlackjackViewModel
     
+    var deck: Deck {get set}
     func updateStatusText(text: String)
     func incrementCurrentGameNum()
     func endCurrentState()

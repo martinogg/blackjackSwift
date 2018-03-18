@@ -15,19 +15,29 @@ class UserPlayGamestate: GamestateProtocol {
     weak var userViewModel: UserViewModel?
     
     func onEnterState() {
-        // TODO
+        // TODO TEST
+        let playername = userViewModel?.playerName ?? "Player"
+        blackjackViewModel?.updateStatusText(text: "\(playername) to play")
     }
     
-    func willLeaveState() {
-        // TODO
-    }
+    func willLeaveState() { }
     
     func hitButtonPress() {
-        // TODO
+        // TODO TEST
+        if let blackjackViewModel = blackjackViewModel {
+            userViewModel?.give(card: blackjackViewModel.deck.takeRandomCard()!) // dddd NO!
+        }
+        if let score = userViewModel?.score {
+            if score >= 21 {
+                blackjackViewModel?.endCurrentState()
+            }
+        }
     }
     
     func standButtonPress() {
-        // TODO
+        // TODO TEST
+        blackjackViewModel?.endCurrentState()
     }
+    
 
 }

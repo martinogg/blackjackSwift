@@ -39,5 +39,14 @@ class UIPlayerViewTests: XCTestCase {
         XCTAssert(playerViewToTest.cards.count == 0)
         //XCTAssert(cardsView.subviews.count == 0) // TODO: This will fail because it takes time as part of the animation. check after 2 seconds, as part of a UI test
     }
-
+    
+    func testStatusText() {
+        let stringToTest = "some text"
+        let labelToTest = UILabel()
+        playerViewToTest.status = labelToTest
+        playerViewToTest.statusText = stringToTest
+        
+        XCTAssert(labelToTest.text == stringToTest)
+        XCTAssert(playerViewToTest.statusText == stringToTest)
+    }
 }

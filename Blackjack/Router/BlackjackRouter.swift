@@ -15,6 +15,10 @@ class BlackjackRouter: BlackjackRouterProtocol {
         let dealerModel = DealerViewModel()
         let blackjackRouter = BlackjackRouter()
         
+        //TODO TEST
+        userModel.playerName = "User"
+        dealerModel.playerName = "Dealer"
+        
         viewModel.viewController = viewController
         viewModel.router = blackjackRouter // TODO TEST
         viewController.viewModel = viewModel

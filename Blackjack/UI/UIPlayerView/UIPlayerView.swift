@@ -106,4 +106,13 @@ import UIKit
         }
         cards.removeAll()
     }
+    
+    var statusText: String {
+        get {
+            return status?.text ?? ""
+        }
+        set {
+            status?.text = newValue
+        }
+    }
 }

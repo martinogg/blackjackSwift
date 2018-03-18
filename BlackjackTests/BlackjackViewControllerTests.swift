@@ -13,10 +13,14 @@ class BlackjackViewControllerTests: XCTestCase {
     
     let vcToTest = BlackjackViewController()
     let mockViewModel = MockViewModel()
-    
+    let gameStatusLabel = UILabel()
+    let currentGameLabel = UILabel()
+
     override func setUp() {
         super.setUp()
         vcToTest.viewModel = mockViewModel
+        vcToTest.gameStatus = gameStatusLabel
+        vcToTest.currentGame = currentGameLabel
     }
     
     override func tearDown() {
@@ -85,7 +89,6 @@ class BlackjackViewControllerTests: XCTestCase {
     }
     
     func testSetGameStatus() {
-        let gameStatusLabel = UILabel()
         let testString = "testString"
         
         vcToTest.gameStatus = gameStatusLabel
@@ -101,7 +104,6 @@ class BlackjackViewControllerTests: XCTestCase {
     }
     
     func testSetCurrentGame() {
-        let currentGameLabel = UILabel()
         let testString = "testString"
         
         vcToTest.currentGame = currentGameLabel
