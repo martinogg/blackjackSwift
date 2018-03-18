@@ -1,6 +1,8 @@
 # blackjackSwift
 coding test to implement Blackjack on iOS using Swift
-This project uses MVVM, TDD (mostly!), State Pattern
+
+This project uses MVVM, TDD (mostly!), State Pattern, SOLID design priciples
+
 Graphics are done using UIKit only
 
 Travis CI status: [![Build Status](https://travis-ci.org/martinogg/blackjackSwift.svg?branch=master)](https://travis-ci.org/martinogg/blackjackSwift)
@@ -12,19 +14,23 @@ Travis CI status: [![Build Status](https://travis-ci.org/martinogg/blackjackSwif
 The structure of the app takes the general form MVVM with the core classes.
 
 ViewController: BlackjackViewController (Designed to take care of the UI aspects)
+
 ViewModel: BlackjackViewModel (The business logic)
-Router: BlackjackRouter (The "wireframe" that )
+
+Router: BlackjackRouter (The "wireframe" that creates and attaches the classes to each other)
 
 
-The BlackjackViewController has a storyboard (main) that contains 2 instances of a custom UI element called UIPlayerView, which reprents the View of the Dealer and the User.
+The BlackjackViewController has a storyboard (main) that contains 2 instances of a custom UI element called UIPlayerView, which represents the View of the Dealer and the User.
 
 Each of these elements are used as Views in sub-MVVM patterns, to which ViewModels DealerViewModel and UserViewModel are attached respectively. These models are owned by their Views created as part of the UIPlayerView elements in the storyboard. The router is responsible for creating and attaching auxillary classes to the ViewController and Views
 
 UserViewModel and DealerViewModel are subclassed from PlayerViewModel.
+
 PlayerViewModel contains the score get variable that calculates the score of the hand.
 
 
 # BlackjackViewModel and GameState
+
 The business logic is held in a state Pattern inside BlackjackViewModel.
 There are 4 game states in this game, all based on GamestateProtocol protocol, that have access to the main BlackjackViewModel for centralised resources such as the Deck of Cards
 
