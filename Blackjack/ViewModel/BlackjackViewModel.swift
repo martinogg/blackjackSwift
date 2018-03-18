@@ -15,8 +15,8 @@ class BlackjackViewModel {
     
     weak var userViewModel: UserViewModel?
     weak var dealerViewModel: DealerViewModel?
-    private var gameStates: [GamestateProtocol] = [];
-    private var currentGameState: GamestateProtocol?
+    var gameStates: [GamestateProtocol] = [];
+    weak var currentGameState: GamestateProtocol?
     
     private var currentGameNum = 0
     
@@ -56,9 +56,8 @@ extension BlackjackViewModel: BlackjackViewModelProtocol {
     
     func viewDidLoad() {
         
-        aTestFunc()
+        //aTestFunc()
         
-        //TODO TEST
         if let newGameStates = router?.createGameStates(with: self),
             let firstGameState = newGameStates.first {
             gameStates = newGameStates
@@ -69,11 +68,11 @@ extension BlackjackViewModel: BlackjackViewModelProtocol {
     }
     
     func hitButtonPress() {
-        //todo
+        currentGameState?.hitButtonPress()
     }
     
     func standButtonPress() {
-        //todo
+        currentGameState?.standButtonPress()
     }
 }
 
@@ -85,12 +84,16 @@ extension BlackjackViewModel: GamestateToBlackjackViewModelProtocol {
     }
     
     func updateStatusText(text: String) {
-        //todo
+        //TODO TEST
+        viewController?.setGameStatus(text: text)
         
     }
     
     func endCurrentState() {
-        //todo
+        //TODO TEST
+        currentGameState?.willLeaveState()
+        currentGameState = currentGameState?.nextGamestate
+        currentGameState?.onEnterState()
     }
 }
 

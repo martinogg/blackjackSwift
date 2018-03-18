@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import UIKit
 
 class BlackjackViewControllerTests: XCTestCase {
     
@@ -84,24 +85,34 @@ class BlackjackViewControllerTests: XCTestCase {
     }
     
     func testSetGameStatus() {
+        let gameStatusLabel = UILabel()
+        let testString = "testString"
         
+        vcToTest.gameStatus = gameStatusLabel
+        
+        vcToTest.setGameStatus(text: testString)
+        
+        guard let vcStringToTest = gameStatusLabel.text else {
+            XCTFail()
+            return
+        }
+        
+        XCTAssert(vcStringToTest == testString)
     }
     
     func testSetCurrentGame() {
+        let currentGameLabel = UILabel()
+        let testString = "testString"
         
+        vcToTest.currentGame = currentGameLabel
+        
+        vcToTest.setCurrentGame(text: testString)
+        
+        guard let vcStringToTest = currentGameLabel.text else {
+            XCTFail()
+            return
+        }
+        
+        XCTAssert(vcStringToTest == testString)
     }
-    
-        /*
-    
-    func setGameStatus(text: String) {
-        //TODO TEST
-        gameStatus.text = text
-    }
-    
-    func setCurrentGame(text: String) {
-        //TODO TEST
-        currentGame.text = text
-    }
- */
-
 }
