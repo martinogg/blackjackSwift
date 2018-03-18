@@ -30,12 +30,13 @@ extension Set where Element == Card {
         }
     }
     
-    mutating func takeRandomCard() -> Card? {
+    mutating func takeRandomCard() -> Card {
 
         guard let cardToTake = self.count == 0 ? nil : self[self.index(self.startIndex, offsetBy: Int(arc4random()) % self.count)] else {
-            return nil
+            fatalError()
         }
-        return self.remove(cardToTake)
+        self.remove(cardToTake)
+        return cardToTake
     }
     
 }

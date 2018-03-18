@@ -31,10 +31,10 @@ class NewPlayGamestate: GamestateProtocol {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             
-            self?.dealerViewModel?.give(card: blackjackViewModel.deck.takeRandomCard()!) //NO! dddd
-            self?.dealerViewModel?.give(card: blackjackViewModel.deck.takeRandomCard()!) //NO!
-            self?.userViewModel?.give(card: blackjackViewModel.deck.takeRandomCard()!) //NO!
-            self?.userViewModel?.give(card: blackjackViewModel.deck.takeRandomCard()!) //NO!
+            self?.dealerViewModel?.give(card: blackjackViewModel.deck.takeRandomCard())
+            self?.dealerViewModel?.give(card: blackjackViewModel.deck.takeRandomCard())
+            self?.userViewModel?.give(card: blackjackViewModel.deck.takeRandomCard())
+            self?.userViewModel?.give(card: blackjackViewModel.deck.takeRandomCard())
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
                 self?.blackjackViewModel?.endCurrentState()

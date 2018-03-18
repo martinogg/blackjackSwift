@@ -141,6 +141,9 @@
 		EE813D57205E837D003A793A /* BlackjackViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE813D56205E837D003A793A /* BlackjackViewModelTests.swift */; };
 		EE813D59205ECA79003A793A /* hidden.png in Resources */ = {isa = PBXBuildFile; fileRef = EE813D58205ECA79003A793A /* hidden.png */; };
 		EE813D5A205ECA79003A793A /* hidden.png in Resources */ = {isa = PBXBuildFile; fileRef = EE813D58205ECA79003A793A /* hidden.png */; };
+		EE813D5C205ED549003A793A /* UserPlayGamestateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE813D5B205ED549003A793A /* UserPlayGamestateTests.swift */; };
+		EE813D5E205EDF0B003A793A /* TestMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE813D5D205EDF0B003A793A /* TestMocks.swift */; };
+		EE813D60205EE373003A793A /* DealerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE813D5F205EE373003A793A /* DealerViewModelTests.swift */; };
 		EEAFD920205BE094002F6C46 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD91F205BE094002F6C46 /* PlayerViewModel.swift */; };
 		EEAFD922205BE103002F6C46 /* PlayerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD921205BE103002F6C46 /* PlayerProtocols.swift */; };
 		EEAFD925205BE1EE002F6C46 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAFD924205BE1EE002F6C46 /* Card.swift */; };
@@ -257,6 +260,9 @@
 		EE813D53205D50E0003A793A /* EndPlayGamestate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPlayGamestate.swift; sourceTree = "<group>"; };
 		EE813D56205E837D003A793A /* BlackjackViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackjackViewModelTests.swift; sourceTree = "<group>"; };
 		EE813D58205ECA79003A793A /* hidden.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hidden.png; sourceTree = "<group>"; };
+		EE813D5B205ED549003A793A /* UserPlayGamestateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPlayGamestateTests.swift; sourceTree = "<group>"; };
+		EE813D5D205EDF0B003A793A /* TestMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMocks.swift; sourceTree = "<group>"; };
+		EE813D5F205EE373003A793A /* DealerViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerViewModelTests.swift; sourceTree = "<group>"; };
 		EEAFD91F205BE094002F6C46 /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		EEAFD921205BE103002F6C46 /* PlayerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerProtocols.swift; sourceTree = "<group>"; };
 		EEAFD924205BE1EE002F6C46 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -348,6 +354,9 @@
 				EEAFD93B205C25CD002F6C46 /* UIPlayerViewTests.swift */,
 				EEAFD945205C38A4002F6C46 /* BlackjackViewControllerTests.swift */,
 				EE813D56205E837D003A793A /* BlackjackViewModelTests.swift */,
+				EE813D5B205ED549003A793A /* UserPlayGamestateTests.swift */,
+				EE813D5D205EDF0B003A793A /* TestMocks.swift */,
+				EE813D5F205EE373003A793A /* DealerViewModelTests.swift */,
 			);
 			path = BlackjackTests;
 			sourceTree = "<group>";
@@ -763,6 +772,8 @@
 				EE813D4F205D4FCF003A793A /* DealerPlayGamestate.swift in Sources */,
 				EE813D52205D50B8003A793A /* NewPlayGamestate.swift in Sources */,
 				EE2A48D3205A870A00DFB0BE /* BlackjackTests.swift in Sources */,
+				EE813D5C205ED549003A793A /* UserPlayGamestateTests.swift in Sources */,
+				EE813D60205EE373003A793A /* DealerViewModelTests.swift in Sources */,
 				EEAFD930205C02BD002F6C46 /* PlayerProtocols.swift in Sources */,
 				EE813D4C205D4F7E003A793A /* GameStatesProtocols.swift in Sources */,
 				EEAFD93D205C25D1002F6C46 /* UIPlayerView.swift in Sources */,
@@ -779,6 +790,7 @@
 				EEAFD92B205BEF38002F6C46 /* CardTests.swift in Sources */,
 				EEAFD93C205C25CD002F6C46 /* UIPlayerViewTests.swift in Sources */,
 				EE2A48FA205A902500DFB0BE /* BlackjackViewModel.swift in Sources */,
+				EE813D5E205EDF0B003A793A /* TestMocks.swift in Sources */,
 				EE2A48F8205A8F6A00DFB0BE /* BlackjackRouterTests.swift in Sources */,
 				EE2A48F9205A900D00DFB0BE /* BlackjackViewController.swift in Sources */,
 				EEAFD92C205BEF59002F6C46 /* Card.swift in Sources */,

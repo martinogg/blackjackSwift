@@ -24,7 +24,7 @@ class DealerPlayGamestate: GamestateProtocol {
         if let dealerViewModel = dealerViewModel {
             while (dealerViewModel.score < 14) {
                 if let blackjackViewModel = blackjackViewModel {
-                    dealerViewModel.give(card: blackjackViewModel.deck.takeRandomCard()!) // dddd NO!
+                    dealerViewModel.give(card: blackjackViewModel.deck.takeRandomCard())
                 }
             }
         }

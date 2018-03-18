@@ -48,9 +48,7 @@ class DeckTests: XCTestCase {
         var cardsFromDeck = Set<Card>()
         
         repeat {
-            if let cardTaken = deckToTest.takeRandomCard() {
-                cardsFromDeck.insert(cardTaken)
-            }
+            cardsFromDeck.insert(deckToTest.takeRandomCard())
         } while deckToTest.count > 0
         
         XCTAssert(cardsFromDeck.count == 52)
