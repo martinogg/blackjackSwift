@@ -10,9 +10,12 @@ import XCTest
 
 class BlackjackViewControllerTests: XCTestCase {
     
+    let vcToTest = BlackjackViewController()
+    let mockViewModel = MockViewModel()
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        vcToTest.viewModel = mockViewModel
     }
     
     override func tearDown() {
@@ -21,7 +24,7 @@ class BlackjackViewControllerTests: XCTestCase {
     }
     
     func testViewDidLoad() {
-        let vcToTest = BlackjackViewController()
+        
         let dealerView = UIPlayerView()
         vcToTest.dealerView = dealerView
         let userView = UIPlayerView()
@@ -32,6 +35,73 @@ class BlackjackViewControllerTests: XCTestCase {
         //This test dont belong here, but the existence of the viewModel in here shows the router was called
         XCTAssert(vcToTest.viewModel != nil)
         
-        //TODO TEST NOTE: view model's viewDidLoad is not tested yet. because I can't mock the viewModel
+        //TODO TEST NOTE: view model's viewDidLoad is not tested yet. because the viewModel can't be mocked
     }
+    
+    class MockViewModel: BlackjackViewModelProtocol {
+        var router: BlackjackRouterProtocol?
+        
+        var viewController: BlackjackViewControllerProtocol?
+        
+        var userViewModel: UserViewModel?
+        
+        var dealerViewModel: DealerViewModel?
+        
+        func viewDidLoad() { }
+        
+        var hitButtonPressCallback: (()->())?
+        var standButtonPressCallback: (()->())?
+        
+        func hitButtonPress() {
+            hitButtonPressCallback?()
+        }
+        
+        func standButtonPress() {
+            standButtonPressCallback?()
+        }
+    }
+    
+    func testHitButtonPress() {
+        let testHitButtonPressExpectation = expectation(description: "testHitButtonPressExpectation")
+        mockViewModel.hitButtonPressCallback = {
+            testHitButtonPressExpectation.fulfill()
+        }
+        
+        vcToTest.hitButtonPress(UIView())
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testStandButtonPress() {
+        let testStandButtonPressExpectation = expectation(description: "testStandButtonPressExpectation")
+        mockViewModel.standButtonPressCallback = {
+            testStandButtonPressExpectation.fulfill()
+        }
+        
+        vcToTest.standButtonPress(UIView())
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testSetGameStatus() {
+        
+    }
+    
+    func testSetCurrentGame() {
+        
+    }
+    
+        /*
+    
+    func setGameStatus(text: String) {
+        //TODO TEST
+        gameStatus.text = text
+    }
+    
+    func setCurrentGame(text: String) {
+        //TODO TEST
+        currentGame.text = text
+    }
+ */
+
 }

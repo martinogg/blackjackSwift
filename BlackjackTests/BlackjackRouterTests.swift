@@ -54,6 +54,7 @@ class BlackjackRouterTests: XCTestCase {
         }
         XCTAssert(viewModel.userViewModel != nil)
         XCTAssert(viewModel.dealerViewModel != nil)
+        XCTAssert(viewModel.router != nil)
     }
     
 }

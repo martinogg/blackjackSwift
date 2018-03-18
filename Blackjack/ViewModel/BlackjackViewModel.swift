@@ -8,27 +8,17 @@
 
 import Foundation
 
-class BlackjackViewModel: BlackjackViewModelProtocol {
+class BlackjackViewModel {
+
     var viewController: BlackjackViewControllerProtocol?
+    var router: BlackjackRouterProtocol?
     
     weak var userViewModel: UserViewModel?
     weak var dealerViewModel: DealerViewModel?
+    private var gameStates: [GamestateProtocol] = [];
+    private var currentGameState: GamestateProtocol?
     
-    private var currentGame = 0
-    
-    func viewDidLoad() {
-        
-        aTestFunc()
-        
-        //TODO TEST
-        //startANewGame()
-        
-    }
-    
-    private func startANewGame() {
-        currentGame += 1;
-        
-    }
+    private var currentGameNum = 0
     
     private func aTestFunc() {
         // TODO DELETE THIS TEST FUNCTION
@@ -58,6 +48,49 @@ class BlackjackViewModel: BlackjackViewModelProtocol {
         DispatchQueue.main.asyncAfter(deadline: .now() + 8.0) { [weak player] in
             player?.resetHand()
         }
+    }
+   
+}
+
+extension BlackjackViewModel: BlackjackViewModelProtocol {
+    
+    func viewDidLoad() {
+        
+        aTestFunc()
+        
+        //TODO TEST
+        if let newGameStates = router?.createGameStates(with: self),
+            let firstGameState = newGameStates.first {
+            gameStates = newGameStates
+            currentGameState = firstGameState
+            currentGameState?.onEnterState()
+        }
+        
+    }
+    
+    func hitButtonPress() {
+        //todo
+    }
+    
+    func standButtonPress() {
+        //todo
+    }
+}
+
+extension BlackjackViewModel: GamestateToBlackjackViewModelProtocol {
+    func incrementCurrentGameNum() {
+        //TODO TEST
+        currentGameNum += 1
+        viewController?.setCurrentGame(text: "Game Number: \(currentGameNum)")
+    }
+    
+    func updateStatusText(text: String) {
+        //todo
+        
+    }
+    
+    func endCurrentState() {
+        //todo
     }
 }
 
