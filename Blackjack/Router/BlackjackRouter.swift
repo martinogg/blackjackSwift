@@ -14,12 +14,15 @@ class BlackjackRouter: BlackjackRouterProtocol {
         let userModel = UserViewModel()
         let dealerModel = DealerViewModel()
         let blackjackRouter = BlackjackRouter()
+        let savedState = SavedState()
         
         userModel.playerName = "User"
         dealerModel.playerName = "Dealer"
         
         viewModel.viewController = viewController
         viewModel.router = blackjackRouter
+        viewModel.savedState = savedState
+        
         viewController.viewModel = viewModel
         
         userModel.view = viewController.userView
@@ -32,21 +35,25 @@ class BlackjackRouter: BlackjackRouterProtocol {
     }
     
     func createGameStates(with viewModel: BlackjackViewModelProtocol) -> [GamestateProtocol] {
+        let appStartGamestate = AppStartGamestate()
         let newGameState = NewPlayGamestate()
         let userPlayGameState = UserPlayGamestate()
         let dealerPlayGameState = DealerPlayGamestate()
         let endPlayGameState = EndPlayGamestate()
         
+        appStartGamestate.nextGamestate = newGameState
         newGameState.nextGamestate = userPlayGameState
         userPlayGameState.nextGamestate = dealerPlayGameState
         dealerPlayGameState.nextGamestate = endPlayGameState
         endPlayGameState.nextGamestate = newGameState
+        
         
         if let viewModelForGamestates = viewModel as? GamestateToBlackjackViewModelProtocol {
             newGameState.blackjackViewModel = viewModelForGamestates
             userPlayGameState.blackjackViewModel = viewModelForGamestates
             dealerPlayGameState.blackjackViewModel = viewModelForGamestates
             endPlayGameState.blackjackViewModel = viewModelForGamestates
+            appStartGamestate.blackjackViewModel = viewModelForGamestates
         }
         
         newGameState.userViewModel = viewModel.userViewModel
@@ -59,7 +66,7 @@ class BlackjackRouter: BlackjackRouterProtocol {
         endPlayGameState.userViewModel = viewModel.userViewModel
         endPlayGameState.dealerViewModel = viewModel.dealerViewModel
         
-        return [newGameState, userPlayGameState, dealerPlayGameState, endPlayGameState]
+        return [appStartGamestate, newGameState, userPlayGameState, dealerPlayGameState, endPlayGameState]
     }
     
 }

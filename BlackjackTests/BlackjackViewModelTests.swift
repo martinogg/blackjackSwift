@@ -107,25 +107,6 @@ class BlackjackViewModelTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
     }
     
-    class MockVC: BlackjackViewControllerProtocol
-    {
-        var viewModel: BlackjackViewModelProtocol?
-        var dealerView: UIPlayerView!
-        var userView: UIPlayerView!
-        
-        var setGameStatusCallback: ((String)->())?
-        func setGameStatus(text: String) {
-            setGameStatusCallback?(text)
-        }
-        
-        var setCurrentGameCallback: ((String)->())?
-        func setCurrentGame(text: String) {
-            setCurrentGameCallback?(text)
-        }
-        
-        
-    }
-    
     func testIncrementCurrentGameNum() {
         let mockVC = MockVC()
         let setCurrentGameCallbackExpectation1 = expectation(description: "setCurrentGameCallbackExpectation1")
@@ -187,4 +168,92 @@ class BlackjackViewModelTests: XCTestCase {
         waitForExpectations(timeout: 5, handler: nil)
     }
 
+    func testShowRestoreStateDialog() {
+        let mockVC = MockVC()
+        vmToTest.viewController = mockVC
+        let mockSavedState = MockSavedState()
+        vmToTest.savedState = mockSavedState
+        
+        mockSavedState.hasPreviousSavedState = false
+        mockVC.showDialogCallback = { (text, response) in
+            // showDialog should not be called if there is no previous saved state
+            XCTFail()
+        }
+        
+        let showRestoreStateDialogExpectation = expectation(description: "showRestoreStateDialogExpectation")
+
+        vmToTest.showRestoreStateDialog {
+            showRestoreStateDialogExpectation.fulfill()
+        }
+        
+        /*
+        mockSavedState.hasPreviousSavedState = true
+        let showDialogCallback
+        mockVC.showDialogCallback = { (text, response) in
+            
+            
+        }
+         */
+        
+        
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    /*
+     // TODO TEST
+     func showRestoreStateDialog(onComplete: @escaping (() -> ())) {
+     
+     if savedState?.hasPreviousSavedState == true {
+     viewController?.showDialog("Load Previous State?", response: { [weak self] selectedOK in
+     if selectedOK == true {
+     self?.savedState?.getPreviousState { [weak self] (gameCount, userWins, dealerWins) in
+     self?.currentGameNum = gameCount
+     self?.userViewModel?.wins = userWins
+     self?.dealerViewModel?.wins = dealerWins
+     onComplete()
+     }
+     } else {
+     onComplete()
+     }
+     })
+     } else {
+     onComplete()
+     }
+     }
+ */
+    func testSaveState() {
+        let saveStateVMtoTest = BlackjackViewModel()
+        
+        let mockVC = MockVC()
+        
+        let mockUserViewModel = UserViewModel()
+        let mockDealerUserViewModel = DealerViewModel()
+        
+        saveStateVMtoTest.viewController = mockVC
+        saveStateVMtoTest.userViewModel = mockUserViewModel
+        saveStateVMtoTest.dealerViewModel = mockDealerUserViewModel
+        
+        mockUserViewModel.wins = 1
+        mockDealerUserViewModel.wins = 2
+        
+        saveStateVMtoTest.incrementCurrentGameNum() //1
+        saveStateVMtoTest.incrementCurrentGameNum() //2
+        saveStateVMtoTest.incrementCurrentGameNum() //3
+        
+        let mockSavedState = MockSavedState()
+        saveStateVMtoTest.savedState = mockSavedState
+        
+        let setStateCallbackExpectation = expectation(description: "setStateCallbackExpectation")
+        
+        mockSavedState.setStateCallback = { (gameCount: Int, userWins: Int, dealerWins: Int) in
+            setStateCallbackExpectation.fulfill()
+            XCTAssert(gameCount == 3)
+            XCTAssert(userWins == 1)
+            XCTAssert(dealerWins == 2)
+        }
+        
+        saveStateVMtoTest.saveState()
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
 }

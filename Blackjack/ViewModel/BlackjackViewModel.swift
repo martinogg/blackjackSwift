@@ -9,7 +9,7 @@
 import Foundation
 
 class BlackjackViewModel {
-
+    
     var viewController: BlackjackViewControllerProtocol?
     var router: BlackjackRouterProtocol?
     
@@ -17,6 +17,8 @@ class BlackjackViewModel {
     weak var dealerViewModel: DealerViewModel?
     var gameStates: [GamestateProtocol] = [];
     weak var currentGameState: GamestateProtocol?
+    
+    var savedState: SavedStateProtocol?
     
     var deck: Deck = Deck()
     
@@ -46,6 +48,33 @@ extension BlackjackViewModel: BlackjackViewModelProtocol {
 }
 
 extension BlackjackViewModel: GamestateToBlackjackViewModelProtocol {
+    func showRestoreStateDialog(onComplete: @escaping (() -> ())) {
+        
+        if savedState?.hasPreviousSavedState == true {
+            viewController?.showDialog("Load Previous State?", response: { [weak self] selectedOK in
+                if selectedOK == true {
+                    self?.savedState?.getPreviousState { [weak self] (gameCount, userWins, dealerWins) in
+                        self?.currentGameNum = gameCount
+                        self?.userViewModel?.wins = userWins
+                        self?.dealerViewModel?.wins = dealerWins
+                        onComplete()
+                    }
+                } else {
+                    onComplete()
+                }
+            })
+        } else {
+            onComplete()
+        }
+    }
+    
+    func saveState() {
+        if let userWins = userViewModel?.wins,
+            let dealerWins = dealerViewModel?.wins {
+            savedState?.setState(gameCount: currentGameNum, userWins: userWins, dealerWins: dealerWins)
+        }
+    }
+    
     func incrementCurrentGameNum() {
         currentGameNum += 1
         viewController?.setCurrentGame(text: "Game Number: \(currentGameNum)")

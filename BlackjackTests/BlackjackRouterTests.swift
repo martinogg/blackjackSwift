@@ -49,10 +49,12 @@ class BlackjackRouterTests: XCTestCase {
         XCTAssert(dealerViewOfDealerPlayerModel == mockViewController.dealerView)
         XCTAssert(userViewOfUserPlayerModel == mockViewController.userView)
         
-        guard let viewModel = mockViewController.viewModel else {
+        guard let viewModel = mockViewController.viewModel as? BlackjackViewModel else {
             XCTFail()
             return
         }
+        
+        XCTAssert(viewModel.savedState != nil)
         XCTAssert(viewModel.userViewModel != nil)
         XCTAssert(viewModel.dealerViewModel != nil)
         XCTAssert(viewModel.router != nil)
@@ -71,20 +73,24 @@ class BlackjackRouterTests: XCTestCase {
         
         let returnedGameStates = routerToTest.createGameStates(with: mockViewModel)
         
-        XCTAssert(returnedGameStates.count == 4)
-        guard let newGameState = returnedGameStates[0] as? NewPlayGamestate,
-            let userPlayGameState = returnedGameStates[1] as? UserPlayGamestate,
-            let dealerPlayGameState = returnedGameStates[2] as? DealerPlayGamestate,
-            let endPlayGameState = returnedGameStates[3] as? EndPlayGamestate else {
+        XCTAssert(returnedGameStates.count == 5)
+        guard
+            let appStartGameState = returnedGameStates[0] as? AppStartGamestate,
+            let newGameState = returnedGameStates[1] as? NewPlayGamestate,
+            let userPlayGameState = returnedGameStates[2] as? UserPlayGamestate,
+            let dealerPlayGameState = returnedGameStates[3] as? DealerPlayGamestate,
+            let endPlayGameState = returnedGameStates[4] as? EndPlayGamestate else {
                 XCTFail()
                 return
         }
         
+        XCTAssert(appStartGameState.blackjackViewModel === mockViewModel)
         XCTAssert(newGameState.blackjackViewModel === mockViewModel)
         XCTAssert(userPlayGameState.blackjackViewModel === mockViewModel)
         XCTAssert(dealerPlayGameState.blackjackViewModel === mockViewModel)
         XCTAssert(endPlayGameState.blackjackViewModel === mockViewModel)
         
+        XCTAssert(appStartGameState.nextGamestate === newGameState)
         XCTAssert(newGameState.nextGamestate === userPlayGameState)
         XCTAssert(userPlayGameState.nextGamestate === dealerPlayGameState)
         XCTAssert(dealerPlayGameState.nextGamestate === endPlayGameState)

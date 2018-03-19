@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class BlackjackViewController: UIViewController, BlackjackViewControllerProtocol {
+class BlackjackViewController: UIViewController {
     var viewModel: BlackjackViewModelProtocol?
     
     @IBOutlet weak var dealerView: UIPlayerView!
@@ -26,6 +26,30 @@ class BlackjackViewController: UIViewController, BlackjackViewControllerProtocol
     @IBOutlet weak var gameStatus: UILabel!
     @IBOutlet weak var currentGame: UILabel!
     
+    override func viewDidLoad() {
+        BlackjackRouter.attachViewModel(to: self)
+        viewModel?.viewDidLoad()
+    }
+    
+}
+
+extension BlackjackViewController: BlackjackViewControllerProtocol {
+    
+    func showDialog(_ text: String, response: @escaping ((Bool)->())) {
+    // TODO TEST (UI)
+        let alert = UIAlertController.init(title: "Blackjack", message: text, preferredStyle: .alert)
+        alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: { (action) in
+            response(true)
+        }))
+        alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: { (action) in
+            response(false)
+        }))
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     func setGameStatus(text: String) {
         gameStatus.text = text
     }
@@ -33,10 +57,5 @@ class BlackjackViewController: UIViewController, BlackjackViewControllerProtocol
     func setCurrentGame(text: String) {
         currentGame.text = text
     }
-    
-    override func viewDidLoad() {
-        BlackjackRouter.attachViewModel(to: self)
-        viewModel?.viewDidLoad()
-    }
-    
+
 }

@@ -28,5 +28,6 @@ protocol GamestateToBlackjackViewModelProtocol: class {
     func updateStatusText(text: String)
     func incrementCurrentGameNum()
     func endCurrentState()
-    
+    func showRestoreStateDialog(onComplete: @escaping (()->()))
+    func saveState()
 }

@@ -18,6 +18,7 @@ protocol BlackjackViewControllerProtocol: class {
     
     func setGameStatus(text: String)
     func setCurrentGame(text: String)
+    func showDialog(_ text: String, response: @escaping ((Bool)->()))
 }
 
 protocol BlackjackViewModelProtocol: class {

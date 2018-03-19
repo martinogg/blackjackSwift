@@ -41,7 +41,10 @@ class EndPlayGamestate: GamestateProtocol {
         }
     }
     
-    func willLeaveState() { }
+    func willLeaveState() {
+        //TODO TEST
+        blackjackViewModel?.saveState()
+    }
     
     func hitButtonPress() { }
     
